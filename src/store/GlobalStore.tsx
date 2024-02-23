@@ -22,6 +22,7 @@ interface FinanceManagerData {
     addSalary: (qty: number) => void;
     addName: (displayName: string) => void;
     addTransaction: (amount: number, typeOfFinance: string, description: string) => void;
+    deleteTransaction: (id: string) => void;
 }
 
 
@@ -51,7 +52,7 @@ export const useStoreFinancialManager = create<FinanceManagerData>((set) => {
     const initialDarkMode = storedDarkMode ? JSON.parse(storedDarkMode) : false;
     document.body.classList.toggle('dark-theme', initialDarkMode);
 
-    set((state) => ({ ...state, isDarkMode: initialDarkMode }))
+    set((state) => ({ ...state, isDarkMode: initialDarkMode }));
     return {
         ...initialState,
         isDarkMode: initialDarkMode,
@@ -106,5 +107,21 @@ export const useStoreFinancialManager = create<FinanceManagerData>((set) => {
                 return newState;
             });
         },
-    };
+
+        deleteTransaction: (id: string) => set((state) => {
+            const filteredTransactions = state.transactions.filter(transaction => transaction.id !== id);
+            const updatedIncome = filteredTransactions.filter(transaction => transaction.type === 'income').reduce((acc, current) => acc + current.amount, 0);
+
+            const updatedBills = filteredTransactions.filter(transaction => transaction.type === 'bills').reduce((acc, current) => acc + current.amount, 0);
+            const newState = {
+                ...state,
+                transactions: filteredTransactions,
+                income: updatedIncome,
+                bills: updatedBills,
+                totalAmount: state.salary + updatedIncome - updatedBills
+            }
+            localStorage.setItem('financeManagerState', JSON.stringify(newState))
+            return newState
+        })
+    }
 });

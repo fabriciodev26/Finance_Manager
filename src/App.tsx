@@ -42,7 +42,7 @@ export const App = () => {
         <>
           <TransactionManagerForm onSubmit={handleDataEntry} />
           {shouldShowDataComponents && (
-            <section className="px-8">
+            <section className="px-8 flex flex-col justify-center items-center gap-4">
               <LiquidityAfterTransactions />
               <TransactionTable />
               <TransactionCharts />

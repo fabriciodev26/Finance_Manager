@@ -28,7 +28,7 @@ export const TransactionManagerForm: React.FC<TransactionManagerFormProps> = ({ 
     }
     return (
         <form onSubmit={handleSubmit}
-            className='rounded-lg py-6 px-4 flex flex-col items-center justify-center w-full sm:w-fit m-auto'>
+            className='rounded-lg py-6 px-4 flex flex-col items-center justify-center w-full sm:w-3/4  md:w-2/4 lg:w-1/4 xl:2/3 sm:px-20 m-auto '>
             <fieldset className={`shadow-lg border min-w-full border-sky-300 pt-3 px-8 pb-10 flex flex-col w-min-full rounded-lg justify-center items-center gap-8 ${isDarkMode ? 'dark-theme shadow-slate-50' : 'light-theme shadow-cyan-500/50'}`}>
                 <legend className="flex gap-2 text-3xl items-center font-normal p-2">{userName} <PersonCheck /></legend>
                 <span className="flex gap-2 text-3xl items-center font-normal">

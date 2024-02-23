@@ -15,9 +15,9 @@ export const TransactionCharts = () => {
     };
 
     return (
-        <div className={`flex justify-center items-center flex-col shadow-lg my-20 p-6 rounded-lg ${isDarkMode ? 'dark-theme' : 'light-theme'}`}>
+        <div className={`flex justify-center items-center flex-col shadow-lg my-20 shadow- p-6 rounded-lg ${isDarkMode ? 'dark-theme shadow-slate-50' : 'light-theme shadow-cyan-500/50'}`}>
             <h2 className="text-3xl font-semibold mt-10">Distribución de Ingresos y Gastos</h2>
-            <div className="w-1/4">
+            <div className="w-3/4">
                 <VictoryPie
                     padAngle={() => 4}
                     innerRadius={100}
