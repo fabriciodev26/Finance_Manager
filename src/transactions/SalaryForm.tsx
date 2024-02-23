@@ -1,6 +1,7 @@
 import { CashStack, PersonAdd } from "@/icons/GeneralIcons";
 import { useStoreFinancialManager } from "@store/GlobalStore";
 import { useState } from "react";
+import { Toaster, toast } from 'sonner';
 
 interface SalaryFormProps {
     onSubmit: () => void;
@@ -19,14 +20,24 @@ export const SalaryForm: React.FC<SalaryFormProps> = ({ onSubmit }) => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (temporarySalary <= 0 || displayName.trim().length < 3) {
-            alert('El salario debe ser mayor a 0 o debe de agregar un nombre');
+            toast.error('El salario debe ser mayor a 0 o debe de agregar un nombre', {
+                position: 'top-center',
+                duration: 1500,
+            });
+            return
         }
-        else {
-            addSalary(temporarySalary);
-            addName(displayName);
+
+        addSalary(temporarySalary);
+        addName(displayName);
+        toast.success('Se añadio el salario', {
+            position: 'top-center',
+            duration: 1500,
+        });
+        setTimeout(() => {
             onSubmit();
-        }
+        }, 1500)
     }
+
     return (
         <form
             onSubmit={handleSubmit}
@@ -64,6 +75,7 @@ export const SalaryForm: React.FC<SalaryFormProps> = ({ onSubmit }) => {
                 </label>
                 <button type="submit" className="bg-sky-300 px-7 py-5 text-3xl rounded-lg font-bold shadow-md shadow-sky-300 border border-white">Añadir Salario</button>
             </fieldset>
+            <Toaster richColors />
         </form >
     )
 }

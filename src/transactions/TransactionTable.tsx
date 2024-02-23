@@ -1,5 +1,6 @@
 import { TrashFill } from "@/icons/GeneralIcons";
 import { useStoreFinancialManager } from "@store/GlobalStore";
+import { toast } from 'sonner';
 
 export const TransactionTable = () => {
     const { transactions, isDarkMode, deleteTransaction } = useStoreFinancialManager();
@@ -27,7 +28,23 @@ export const TransactionTable = () => {
                             <td className="font-medium py-4 px-4">S/ {transaction.amount}</td>
                             <td
                                 className="font-medium py-4 px-4"
-                                onClick={() => deleteTransaction(transaction.id)}><TrashFill /></td>
+                                onClick={() => {
+                                    const transactionId = transaction.id;
+                                    deleteTransaction(transactionId);
+                                    const transactionExists = transactions.some(transaction => transaction.id === transactionId);
+                                    if (transactionExists) {
+                                        toast.success('Se eliminó la transacción correctamente', {
+                                            position: 'top-center',
+                                            duration: 1500,
+                                        });
+                                    } else {
+                                        toast.error('Hubo un error en la eliminación de la transacción', {
+                                            position: 'top-center',
+                                            duration: 1500,
+                                        });
+                                    }
+                                }}><TrashFill />
+                            </td>
                         </tr>
                     ))}
                 </tbody>

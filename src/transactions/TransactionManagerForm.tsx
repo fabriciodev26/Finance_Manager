@@ -1,6 +1,7 @@
 import { CashStack, PersonCheck } from "@/icons/GeneralIcons";
 import { useStoreFinancialManager } from "@store/GlobalStore";
 import { useState } from "react";
+import { Toaster, toast } from 'sonner';
 
 interface TransactionManagerFormProps {
     onSubmit: () => void;
@@ -18,10 +19,17 @@ export const TransactionManagerForm: React.FC<TransactionManagerFormProps> = ({ 
         e.preventDefault();
         console.log(amount, description, typeOfFinance)
         if (isNaN(amount) || amount <= 0 || !description.trim()) {
-            alert('Por favor, ingrese una descripción y un monto válido')
+            toast.error('Completa el formulario', {
+                position: 'top-center',
+                duration: 1500,
+            });
             return
         }
         addTransaction(amount, typeOfFinance, description);
+        toast.success('Se añadio la transacción', {
+            position: 'top-center',
+            duration: 1500,
+        });
         setDescription("");
         setAmount(0);
         onSubmit();
@@ -80,6 +88,7 @@ export const TransactionManagerForm: React.FC<TransactionManagerFormProps> = ({ 
                 </label>
                 <button type="submit" className="bg-sky-300 px-7 py-5  md:px-5 text-3xl rounded-lg font-normal shadow-md shadow-sky-300 border border-white mb-8">Añadir Transacción</button>
             </fieldset>
+            <Toaster richColors />
         </form >
     )
 }

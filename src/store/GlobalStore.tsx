@@ -107,7 +107,6 @@ export const useStoreFinancialManager = create<FinanceManagerData>((set) => {
                 return newState;
             });
         },
-
         deleteTransaction: (id: string) => set((state) => {
             const filteredTransactions = state.transactions.filter(transaction => transaction.id !== id);
             const updatedIncome = filteredTransactions.filter(transaction => transaction.type === 'income').reduce((acc, current) => acc + current.amount, 0);
