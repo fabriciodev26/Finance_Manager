@@ -1,0 +1,100 @@
+/** General Styles **/
+header,
+nav,
+main,
+aside,
+form,
+footer,
+div,
+section,
+article,
+fieldset,
+summary,
+legend,
+menu,
+figure,
+html,
+body,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+button,
+input,
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+label,
+canvas,
+details,
+img {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+}
+
+.dark-theme {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+.light-theme {
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+}
+/* En tu archivo tailwind.css o styles.css */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+  -webkit-animation: spin 1s linear infinite;
+}
+
+.toggle-icon {
+  transition: fill 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -webkit-transition: fill 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -moz-transition: fill 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -ms-transition: fill 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -o-transition: fill 0.25s ease-in-out, transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
