@@ -32,7 +32,7 @@ export const SalaryForm: React.FC<SalaryFormProps> = ({ onSubmit }) => {
             onSubmit={handleSubmit}
             className='rounded-lg py-6 px-4 flex justify-center w-full'
         >
-            <fieldset className={`shadow-lg border border-sky-300 py-10 flex flex-col w-1/4 rounded-lg justify-center items-center gap-8 ${isDarkMode ? 'dark-theme shadow-slate-50' : 'light-theme shadow-cyan-500/50'}`}>
+            <fieldset className={`shadow-lg border px-6 border-sky-300 py-10 flex flex-col w-1/4 rounded-lg justify-center items-center gap-8 ${isDarkMode ? 'dark-theme shadow-slate-50' : 'light-theme shadow-cyan-500/50'}`}>
                 <label htmlFor="userName" className="flex flex-col gap-2">
                     <span className="flex gap-2 text-3xl items-center font-normal">
                         <PersonAdd />
