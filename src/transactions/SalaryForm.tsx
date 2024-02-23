@@ -62,7 +62,7 @@ export const SalaryForm: React.FC<SalaryFormProps> = ({ onSubmit }) => {
                         className={`text-black rounded-md px-5 py-3 text-2xl ${isDarkMode ? "" : "border border-sky-300"}`}
                     />
                 </label>
-                <button type="submit" className="bg-sky-300 px-7 py-5 text-3xl rounded-lg font-normal shadow-md shadow-sky-300 border border-white">Añadir Salario</button>
+                <button type="submit" className="bg-sky-300 px-7 py-5 text-3xl rounded-lg font-bold shadow-md shadow-sky-300 border border-white">Añadir Salario</button>
             </fieldset>
         </form >
     )
